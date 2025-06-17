@@ -1,0 +1,284 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ensure full viewport coverage */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	scrollbar-width: none; /* Firefox */
+	scroll-behavior: smooth; /* Enable smooth scrolling */
+	/* Increased scroll padding to prevent clipping */
+	scroll-padding-top: 150px; /* Account for fixed navbar with extra space */
+}
+
+/* Base body gradient - simplified for scroll-responsive system */
+body {
+	background: #000000;
+	background-attachment: fixed;
+	color: white;
+	font-family: "Inter", system-ui, -apple-system, sans-serif;
+	overflow-x: hidden;
+	line-height: 1.6;
+	font-weight: 400;
+	min-height: 100vh;
+	overscroll-behavior: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* Current active utilities */
+@layer utilities {
+	.bg-gradient-radial {
+		background: radial-gradient(circle at center, var(--tw-gradient-stops));
+	}
+
+	.text-shadow-subtle {
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+	}
+
+	.scrollbar-hide {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+/* Multi-layer overscroll protection with enhanced gradients */
+html::before {
+	content: "";
+	position: fixed;
+	top: -200vh;
+	left: 0;
+	right: 0;
+	bottom: -200vh;
+	background: #000000;
+	z-index: -999;
+}
+
+/* Hide scrollbar completely */
+::-webkit-scrollbar {
+	width: 0px;
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: transparent;
+}
+
+/* Hide scrollbar for Firefox */
+html {
+	scrollbar-width: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+body {
+	-ms-overflow-style: none;
+}
+
+/* Animation for metallic shine effect */
+@keyframes shine {
+	0% {
+		left: -100%;
+		transition-property: left;
+	}
+	100% {
+		left: 100%;
+		transition-property: left;
+	}
+}
+
+.animate-shine {
+	animation: shine 2s infinite;
+}
+
+/* Enhanced selection styling with grayscale */
+::selection {
+	background: rgba(100, 100, 100, 0.3);
+	color: white;
+}
+
+/* Enhanced typography system */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 700;
+	letter-spacing: -0.025em;
+}
+/* Active utilities */
+@layer utilities {
+	.bg-gradient-radial {
+		background: radial-gradient(circle at center, var(--tw-gradient-stops));
+	}
+
+	.text-shadow-subtle {
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+	}
+}
+
+/* Enhanced luxury elements */
+@layer components {
+	.font-display {
+		font-family: "Playfair Display", Georgia, serif;
+	}
+
+	.font-body {
+		font-family: "Inter", system-ui, sans-serif;
+	}
+
+	.font-mono {
+		font-family: "JetBrains Mono", "SF Mono", monospace;
+	}
+
+	.font-lobster {
+		font-family: "Lobster Two", cursive;
+	}
+
+	.text-depth {
+		text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.6), 0 8px 32px rgba(0, 0, 0, 0.4);
+	}
+
+	.text-elegant {
+		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+	}
+
+	.border-luxury {
+		border: 2px solid rgba(255, 255, 255, 0.15);
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+	}
+
+	.border-elegant {
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+	}
+
+	.gradient-text {
+		background: linear-gradient(135deg, #ffffff 0%, #e5e5e5 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	/* Premium Social Media Button Styling */
+	.social-button-premium {
+		position: relative;
+		overflow: hidden;
+		background: linear-gradient(145deg, rgba(40, 40, 40, 0.6), rgba(20, 20, 20, 0.4));
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(5px);
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+		transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+
+	.social-button-premium:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+		transition: all 0.6s;
+		z-index: 1;
+	}
+
+	.social-button-premium:hover {
+		transform: translateY(-5px) scale(1.05);
+		border-color: rgba(200, 200, 200, 0.3);
+		box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 10px 2px rgba(200, 200, 200, 0.15),
+			inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+	}
+
+	/* Ring effect animation on hover */
+	.social-button-premium:after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		padding: 1px;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent 50%, rgba(255, 255, 255, 0.15) 100%);
+		-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+		mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+		opacity: 0;
+		transition: opacity 0.5s;
+	}
+
+	.social-button-premium:hover:after {
+		opacity: 1;
+	}
+
+	.social-button-premium:hover:before {
+		left: 100%;
+	}
+
+	.social-button-premium:active {
+		transform: translateY(-2px) scale(1.02);
+		transition-duration: 0.1s;
+	}
+
+	.social-icon-3d {
+		filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5)) drop-shadow(0 -1px 1px rgba(255, 255, 255, 0.3));
+		transition: all 0.3s ease;
+	}
+
+	.social-button-premium:hover .social-icon-3d {
+		filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5)) drop-shadow(0 -1px 1px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 8px rgba(200, 200, 200, 0.4));
+		transform: scale(1.1) rotate(-5deg);
+	}
+
+	.premium-glow {
+		position: relative;
+	}
+
+	.premium-glow::after {
+		content: "";
+		position: absolute;
+		top: -10px;
+		left: -10px;
+		right: -10px;
+		bottom: -10px;
+		background: radial-gradient(circle, rgba(200, 200, 200, 0.3) 0%, transparent 70%);
+		opacity: 0;
+		transition: opacity 0.5s ease;
+		pointer-events: none;
+		z-index: -1;
+	}
+
+	.premium-glow:hover::after {
+		opacity: 1;
+	}
+
+	@keyframes subtle-pulse {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.05);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+
+	.pulse-on-hover:hover {
+		animation: subtle-pulse 1.5s infinite ease-in-out;
+	}
+}
